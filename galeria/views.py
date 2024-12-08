@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from galeria.models import Fotografia
 
 def index(request):
-    fotografias = Fotografia.objects.filter(publicadas=True)
+    fotografias = Fotografia.objects.order_by('-data_fotografia').filter(publicadas=True)
     return render(request, 'galeria/index.html', {'cards':fotografias})
 
 def imagem(request, foto_id):
